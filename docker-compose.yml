@@ -1,0 +1,14 @@
+name: "litellm"
+services:
+  ghc-proxy:
+    image: litellm/litellm:latest
+    container_name: ghc-proxy
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:4000:4000"
+    env_file:
+      - .env
+    volumes:
+      - ./copilot-config.yaml:/app/copilot-config.yaml
+      - ./litellm-data:/root/.config/litellm
+    command: ["--config", "/app/copilot-config.yaml", "--port", "4000"]
