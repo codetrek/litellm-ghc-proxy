@@ -1,4 +1,9 @@
 name: "litellm"
+
+networks:
+  litellm-net:
+    driver: bridge
+
 services:
   ghc-proxy:
     image: litellm/litellm:v1.81.0-patch2
@@ -15,6 +20,8 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+    networks:
+      - litellm-net
 
   key-manager:
     build:
@@ -33,6 +40,8 @@ services:
         condition: service_started
     volumes:
       - ./conf:/app/conf:ro
+    networks:
+      - litellm-net
 
   postgres:
     image: postgres:16
@@ -54,3 +63,5 @@ services:
       interval: 10s
       timeout: 3s
       retries: 5
+    networks:
+      - litellm-net
