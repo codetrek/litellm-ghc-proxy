@@ -6,6 +6,9 @@
 litellm_settings:
   drop_params: true
 
+general_settings:
+  database_url: postgresql://litellm:litellm@postgres:5432/litellm
+
 model_list:
   - model_name: gpt-5-mini
     litellm_params:
@@ -93,19 +96,10 @@ model_list:
     # GPT-5.2 (OpenAI) - enabled
     # Max tokens: 64000, Context: 264000
 
-  - model_name: gpt-3.5-turbo
+  - model_name: gpt-5.2-codex
     litellm_params:
-      model: github_copilot/gpt-3.5-turbo-0613
+      model: github_copilot/gpt-5.2-codex
       extra_headers: {"Editor-Version": "vscode/1.108.2", "Copilot-Integration-Id": "vscode-chat"}
-    # GPT 3.5 Turbo (Azure OpenAI) - enabled
-    # Max tokens: 4096, Context: 16384
-
-  - model_name: gpt-4
-    litellm_params:
-      model: github_copilot/gpt-4
-      extra_headers: {"Editor-Version": "vscode/1.108.2", "Copilot-Integration-Id": "vscode-chat"}
-    # GPT 4 (Azure OpenAI) - enabled
-    # Max tokens: 4096, Context: 32768
 
   - model_name: gpt-4.1
     litellm_params:

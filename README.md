@@ -33,7 +33,7 @@ Run a LiteLLM proxy configured for GitHub Copilot models via Docker Compose.
 
   litellm-data/github_copilot/access-token
 
-3. (Optional) Adjust models in copilot-config.yaml.
+3. (Optional) Adjust models in conf/copilot-config.yaml.
 
 ## Run
 
@@ -46,6 +46,19 @@ Stop the proxy:
   docker compose down
 
 The proxy listens on http://localhost:4000.
+
+## Key Manager UI
+
+Start the UI (included in docker compose):
+
+  docker compose up -d
+
+Open http://localhost:8000
+
+Credentials are read from `.env`:
+- `ADMIN_USER`
+- `ADMIN_PASSWORD`
+- `SESSION_SECRET`
 
 ## Test
 

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ app_name }} · Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="min-h-screen bg-slate-950 text-slate-100">
+    <div class="min-h-screen flex items-center justify-center px-6">
+      <div class="w-full max-w-md rounded-2xl border border-slate-800 bg-slate-900/70 p-8 shadow-2xl">
+        <div class="mb-6">
+          <div class="h-12 w-12 rounded-xl bg-amber-400 text-slate-900 font-bold grid place-items-center">LK</div>
+          <h1 class="mt-4 text-2xl font-semibold">{{ app_name }}</h1>
+          <p class="text-slate-400 text-sm">Secure access for managing virtual keys.</p>
+        </div>
+        <form method="post" action="/login" class="space-y-4">
+          <label class="block">
+            <span class="text-xs uppercase tracking-wider text-slate-400">Username</span>
+            <input name="username" type="text" required class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400" />
+          </label>
+          <label class="block">
+            <span class="text-xs uppercase tracking-wider text-slate-400">Password</span>
+            <input name="password" type="password" required class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400" />
+          </label>
+          {% if error %}
+          <div class="rounded-lg border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-200">{{ error }}</div>
+          {% endif %}
+          <button class="w-full rounded-xl bg-amber-400 px-4 py-2 font-semibold text-slate-900 hover:bg-amber-300">Sign In</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

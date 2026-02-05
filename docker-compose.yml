@@ -2,13 +2,55 @@ name: "litellm"
 services:
   ghc-proxy:
     image: litellm/litellm:v1.81.0-patch2
-    container_name: ghc-proxy
+    container_name: litellm-proxy
     restart: unless-stopped
     ports:
       - "127.0.0.1:4000:4000"
     env_file:
       - .env
     volumes:
-      - ./copilot-config.yaml:/app/copilot-config.yaml
+      - ./conf/copilot-config.yaml:/app/copilot-config.yaml
       - ./litellm-data:/root/.config/litellm
     command: ["--config", "/app/copilot-config.yaml", "--port", "4000"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  key-manager:
+    build:
+      context: ./web
+    container_name: litellm-manager
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8000:8000"
+    env_file:
+      - .env
+    environment:
+      LITELLM_BASE_URL: http://ghc-proxy:4000
+      LITELLM_CONF_PATH: /app/conf/copilot-config.yaml
+    depends_on:
+      ghc-proxy:
+        condition: service_started
+    volumes:
+      - ./conf:/app/conf:ro
+
+  postgres:
+    image: postgres:16
+    container_name: litellm-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: litellm
+      POSTGRES_PASSWORD: litellm
+      POSTGRES_DB: litellm
+    command:
+      - postgres
+      - -c
+      - config_file=/etc/postgresql/postgres.conf
+    volumes:
+      - ./litellm-data/postgres:/var/lib/postgresql/data
+      - ./conf/postgres.conf:/etc/postgresql/postgres.conf:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U litellm -d litellm"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
