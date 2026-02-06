@@ -14,8 +14,8 @@ services:
     environment:
       - LOG_LEVEL=INFO
       - ENABLE_NETWORK_MONITOR=true
-      - DOCS_URL="/docs"
-      - ROOT_REDIRECT_URL="/ui"
+      - DOCS_URL=/docs
+      - ROOT_REDIRECT_URL=/ui
       - STORE_MODEL_IN_DB=true
     env_file:
       - .env
