@@ -73,7 +73,7 @@ model_list:
       model: github_copilot/claude-opus-4.6
       extra_headers: {"Editor-Version": "vscode/1.108.2", "Copilot-Integration-Id": "vscode-chat"}
 
- - model_name: claude-opus-41
+  - model_name: claude-opus-41
     litellm_params:
       model: github_copilot/claude-opus-41
       extra_headers: {"Editor-Version": "vscode/1.108.2", "Copilot-Integration-Id": "vscode-chat"}
