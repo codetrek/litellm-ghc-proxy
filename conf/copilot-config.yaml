@@ -65,8 +65,6 @@ model_list:
       extra_headers: {"Editor-Version": "vscode/1.108.2", "Copilot-Integration-Id": "vscode-chat"}
     # Claude Opus 4.5 (Anthropic) - enabled
     # Max tokens: 32000, Context: 160000
-    litellm_settings:
-      drop_params: true
 
   - model_name: claude-opus-4.6
     litellm_params:

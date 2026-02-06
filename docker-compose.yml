@@ -23,26 +23,6 @@ services:
     networks:
       - litellm-net
 
-  key-manager:
-    build:
-      context: ./web
-    container_name: litellm-manager
-    restart: unless-stopped
-    ports:
-      - "127.0.0.1:8000:8000"
-    env_file:
-      - .env
-    environment:
-      LITELLM_BASE_URL: http://ghc-proxy:4000
-      LITELLM_CONF_PATH: /app/conf/copilot-config.yaml
-    depends_on:
-      ghc-proxy:
-        condition: service_started
-    volumes:
-      - ./conf:/app/conf:ro
-    networks:
-      - litellm-net
-
   postgres:
     image: postgres:16
     container_name: litellm-postgres
