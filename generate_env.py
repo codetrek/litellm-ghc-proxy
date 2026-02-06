@@ -19,10 +19,10 @@ if os.path.exists('.env'):
     print('Skipped: .env already exists.')
 else:
     with open('.env', 'w') as f:
-        f.write('LOG_LEVEL=INFO\n')
         f.write(f'LITELLM_MASTER_KEY={master_key}\n')
         f.write(f'LITELLM_SALT_KEY={salt_key}\n')
-        f.write('ENABLE_NETWORK_MONITOR=true\n')
+        f.write('UI_USERNAME=ImNotAdmin\n')
+        f.write(f'UI_PASSWORD={admin_password}\n')
 
     print(f'Master Key: {master_key}')
     print(f'Admin Password: {admin_password}\n')

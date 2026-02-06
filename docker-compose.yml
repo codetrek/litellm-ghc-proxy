@@ -11,6 +11,12 @@ services:
     restart: unless-stopped
     ports:
       - "127.0.0.1:4000:4000"
+    environment:
+      - LOG_LEVEL=INFO
+      - ENABLE_NETWORK_MONITOR=true
+      - DOCS_URL="/docs"
+      - ROOT_REDIRECT_URL="/ui"
+      - STORE_MODEL_IN_DB=true
     env_file:
       - .env
     volumes:
