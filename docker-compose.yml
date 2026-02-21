@@ -6,7 +6,7 @@ networks:
 
 services:
   ghc-proxy:
-    image: litellm/litellm:v1.81.3-stable
+    image: litellm/litellm:v1.81.9-stable.gemini.3.1-pro.sonnet-4.6
     container_name: litellm-proxy
     restart: unless-stopped
     ports:
