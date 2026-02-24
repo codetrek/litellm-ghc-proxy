@@ -156,7 +156,7 @@ model_list:
     litellm_params:
       model: github_copilot/claude-sonnet-4
       extra_headers:
-        Editor-Version: "vscode/1.109.0"
+        Editor-Version: "vscode/1.109.5"
         Copilot-Integration-Id: "copilot-chat"
 ```
 
