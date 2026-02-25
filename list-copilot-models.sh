@@ -40,7 +40,7 @@ fi
 echo ""
 echo "model_list:"
 
-curl -s -H "Authorization: Bearer $GITHUB_TOKEN" https://api.githubcopilot.com/models | \
+curl -s -H "Authorization: Bearer $GITHUB_TOKEN" https://api.enterprise.githubcopilot.com/models | \
 jq -r '.data[] | select(.capabilities.type == "chat") | '"$FILTER"' |
 "  - model_name: " + .id + "
     litellm_params:
