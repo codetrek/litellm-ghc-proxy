@@ -74,6 +74,20 @@ model_list:
     # GPT-5.2-Codex (OpenAI) - enabled
     # Max tokens: 128000, Context: 400000
 
+  - model_name: gpt-5.3-codex
+    litellm_params:
+      model: github_copilot/gpt-5.3-codex
+      extra_headers: {"Editor-Version": "vscode/1.111.0", "Copilot-Integration-Id": "vscode-chat"}
+    # GPT-5.2-Codex (OpenAI) - enabled
+    # Max tokens: 128000, Context: 400000
+
+  - model_name: gpt-5.4
+    litellm_params:
+      model: github_copilot/gpt-5.4
+      extra_headers: {"Editor-Version": "vscode/1.111.0", "Copilot-Integration-Id": "vscode-chat"}
+    # GPT-5.2-Codex (OpenAI) - enabled
+    # Max tokens: 128000, Context: 400000
+
   - model_name: claude-haiku-4.5
     litellm_params:
       model: github_copilot/claude-haiku-4.5
